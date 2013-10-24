@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: confluence
+# Cookbook Name:: bamboo
 # Recipe:: tomcat_configuration
 #
 # Copyright 2013, Brian Flad
@@ -17,26 +17,26 @@
 # limitations under the License.
 #
 
-settings = Confluence.settings(node)
+settings = Bamboo.settings(node)
 
-template "#{node['confluence']['install_path']}/bin/setenv.sh" do
+template "#{node['bamboo']['install_path']}/bin/setenv.sh" do
   source "setenv.sh.erb"
-  owner  node['confluence']['user']
+  owner  node['bamboo']['user']
   mode   "0755"
-  notifies :restart, "service[confluence]", :delayed
+  notifies :restart, "service[bamboo]", :delayed
 end
 
-template "#{node['confluence']['install_path']}/conf/server.xml" do
+template "#{node['bamboo']['install_path']}/conf/server.xml" do
   source "server.xml.erb"
-  owner  node['confluence']['user']
+  owner  node['bamboo']['user']
   mode   "0640"
   variables :tomcat => settings['tomcat']
-  notifies :restart, "service[confluence]", :delayed
+  notifies :restart, "service[bamboo]", :delayed
 end
 
-template "#{node['confluence']['install_path']}/conf/web.xml" do
+template "#{node['bamboo']['install_path']}/conf/web.xml" do
   source "web.xml.erb"
-  owner  node['confluence']['user']
+  owner  node['bamboo']['user']
   mode   "0644"
-  notifies :restart, "service[confluence]", :delayed
+  notifies :restart, "service[bamboo]", :delayed
 end

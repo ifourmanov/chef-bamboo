@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.omnibus.chef_version = :latest
 
   config.vm.define :centos6 do |dist_config|
-    dist_config.vm.hostname = 'confluence-centos-6'
+    dist_config.vm.hostname = 'bamboo-centos-6'
     dist_config.vm.box       = 'opscode-centos-6.4'
     dist_config.vm.box_url   = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box'
     
@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", 1024]
     end
 
-    dist_config.vm.network :private_network, ip: '192.168.50.10'
+    dist_config.vm.network :private_network, ip: '192.168.50.50'
 
     config.vm.synced_folder host_cache_path, guest_cache_path
 
@@ -44,13 +44,13 @@ Vagrant.configure("2") do |config|
 
       chef.run_list = %w{
         recipe[java]
-        recipe[confluence]
+        recipe[bamboo]
       }
     end
   end
 
   config.vm.define :ubuntu1204 do |dist_config|
-    dist_config.vm.hostname = 'confluence-ubuntu-1204'
+    dist_config.vm.hostname = 'bamboo-ubuntu-1204'
     dist_config.vm.box       = 'opscode-ubuntu-12.04'
     dist_config.vm.box_url   = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box'
 
@@ -58,7 +58,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", 1024]
     end
     
-    dist_config.vm.network :private_network, ip: '192.168.50.11'
+    dist_config.vm.network :private_network, ip: '192.168.50.51'
 
     config.vm.synced_folder host_cache_path, guest_cache_path
 
@@ -84,7 +84,7 @@ Vagrant.configure("2") do |config|
 
       chef.run_list = %w{
         recipe[java]
-        recipe[confluence]
+        recipe[bamboo]
       }
     end
   end

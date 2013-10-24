@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: confluence
+# Cookbook Name:: bamboo
 # Recipe:: database
 #
 # Copyright 2013, Brian Flad
@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-settings = Confluence.settings(node)
+settings = Bamboo.settings(node)
 
 database_connection = {
   :host => settings['database']['host'],

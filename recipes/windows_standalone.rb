@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: confluence
+# Cookbook Name:: bamboo
 # Recipe:: windows_standlone
 #
 # Copyright 2013, Brian Flad

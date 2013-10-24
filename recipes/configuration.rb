@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: confluence
+# Cookbook Name:: bamboo
 # Recipe:: configuration
 #
 # Copyright 2013, Brian Flad
@@ -17,19 +17,19 @@
 # limitations under the License.
 #
 
-#settings = Confluence.settings(node)
+#settings = Bamboo.settings(node)
 
-template "#{node['confluence']['install_path']}/confluence/WEB-INF/classes/confluence-init.properties" do
-  source "confluence-init.properties.erb"
-  owner  node['confluence']['user']
+template "#{node['bamboo']['install_path']}/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties" do
+  source "bamboo-init.properties.erb"
+  owner  node['bamboo']['user']
   mode   "0644"
-  notifies :restart, "service[confluence]", :delayed
+  notifies :restart, "service[bamboo]", :delayed
 end
 
-#template "#{node['confluence']['home_path']}/confluence.cfg.xml" do
-#  source "confluence.cfg.xml.erb"
-#  owner  node['confluence']['user']
+#template "#{node['bamboo']['home_path']}/bamboo.cfg.xml" do
+#  source "bamboo.cfg.xml.erb"
+#  owner  node['bamboo']['user']
 #  mode   "0644"
 #  variables :database => settings['database']
-#  notifies :restart, "service[confluence]", :delayed
+#  notifies :restart, "service[bamboo]", :delayed
 #end

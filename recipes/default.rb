@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: confluence
+# Cookbook Name:: bamboo
 # Recipe:: default
 #
 # Copyright 2013, Brian Flad
@@ -19,14 +19,14 @@
 
 platform = "windows" if node['platform_family'] == "windows"
 platform ||= "linux"
-settings = Confluence.settings(node)
+settings = Bamboo.settings(node)
 
-include_recipe "confluence::database" if settings['database']['host'] == "localhost"
-include_recipe "confluence::#{platform}_#{node['confluence']['install_type']}"
+include_recipe "bamboo::database" if settings['database']['host'] == "localhost"
+include_recipe "bamboo::#{platform}_#{node['bamboo']['install_type']}"
 
-unless node['confluence']['install_type'].match("war")
-  include_recipe "confluence::tomcat_configuration"
-  include_recipe "confluence::apache2"
+unless node['bamboo']['install_type'].match("war")
+  include_recipe "bamboo::tomcat_configuration"
+  include_recipe "bamboo::apache2"
 end
 
-include_recipe "confluence::configuration"
+include_recipe "bamboo::configuration"

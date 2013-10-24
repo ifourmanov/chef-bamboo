@@ -4,11 +4,11 @@
 #
 rmiPort$Long=8000
 app.install.service$Boolean=true
-existingInstallationDir=<%= node['confluence']['install_path'] %>
-sys.confirmedUpdateInstallationString=<%= node['confluence']['update'] ? "true" : "false" %>
+existingInstallationDir=<%= node['bamboo']['install_path'] %>
+sys.confirmedUpdateInstallationString=<%= node['bamboo']['update'] ? "true" : "false" %>
 sys.languageId=en
-sys.installationDir=<%= node['confluence']['install_path'] %>
-app.confHome=<%= node['confluence']['home_path'] %>
+sys.installationDir=<%= node['bamboo']['install_path'] %>
+app.confHome=<%= node['bamboo']['home_path'] %>
 executeLauncherAction$Boolean=true
-httpPort$Long=<%= node['confluence']['tomcat']['port'] %>
+httpPort$Long=<%= node['bamboo']['tomcat']['port'] %>
 portChoice=default
